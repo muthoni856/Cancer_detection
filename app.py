@@ -36,6 +36,7 @@ def predict_image(file):
 def form():
     result = None
     file_url = None
+    #POST Method
     if request.method == "POST":
         if 'file' not in request.files:
             return 'No file part'
