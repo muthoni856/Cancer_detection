@@ -45,13 +45,14 @@ def form():
             return 'No selected file'
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)#photos uploaded are saved here
             file.save(file_path)  # Save the file temporarily
             result = predict_image(file_path)
             os.remove(file_path)  # Clean up the saved file after prediction
     return render_template('index.html', result=result)
 
 if __name__ == "__main__":
+    #photos upload here
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
     app.run(debug=True)
