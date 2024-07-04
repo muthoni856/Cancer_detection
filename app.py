@@ -23,7 +23,7 @@ def preprocess_image(file):
     img_array = img_to_array(img)  # Convert the image to a numpy array
     img_array = np.expand_dims(img_array, axis=0)  # Add an extra dimension for batch size
     img_array /= 255.0  # Scale the pixel values to [0, 1]
-    return img_array
+    return img_array #this is an array of images
 
 # Function to predict the class of the image
 def predict_image(file):
@@ -32,7 +32,7 @@ def predict_image(file):
     class_label = 'malignant' if prediction[0][0] > 0.5 else 'benign'
     return class_label
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"]) #points to the root directory for GET an POST requests
 def form():
     result = None
     file_url = None
